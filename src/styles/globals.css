@@ -1,0 +1,75 @@
+@import './colors_and_type.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg-page);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  overflow-x: hidden;
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+::selection {
+  background: var(--cs-green-500);
+  color: var(--fg-on-accent);
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--cs-green-500);
+  color: var(--fg-on-accent);
+  padding: 8px 16px;
+  z-index: 100;
+  font-weight: 700;
+  border: 0;
+}
+.skip-link:focus { top: 0; }
+
+@keyframes cs-pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 1px rgba(31,181,38,.45), 0 0 18px rgba(31,181,38,.45), 0 0 38px rgba(31,181,38,.25);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(31,181,38,.6), 0 0 28px rgba(31,181,38,.6), 0 0 52px rgba(31,181,38,.35);
+  }
+}
+.cs-pulse {
+  animation: cs-pulse-glow 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-pulse { animation: none; }
+  html, body { scroll-behavior: auto !important; }
+}
+
+/* Scan-line effect for video posters */
+@keyframes cs-scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.cs-scanline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(31,181,38,0.12) 50%, transparent 100%);
+  animation: cs-scanline 3.2s linear infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-scanline::before { animation: none; display: none; }
+}

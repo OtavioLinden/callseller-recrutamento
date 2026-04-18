@@ -1,0 +1,240 @@
+- generic [active] [ref=e1]:
+  - link "Pular para o conteúdo" [ref=e2] [cursor=pointer]:
+    - /url: "#operacao"
+  - generic [ref=e3]:
+    - navigation "Navegação principal" [ref=e4]:
+      - generic [ref=e5]:
+        - link "CallSeller — início" [ref=e6] [cursor=pointer]:
+          - /url: "#top"
+          - img "CallSeller" [ref=e7]
+        - list [ref=e8]:
+          - listitem [ref=e9]:
+            - link "Operação" [ref=e10] [cursor=pointer]:
+              - /url: "#operacao"
+          - listitem [ref=e11]:
+            - link "Benefícios" [ref=e12] [cursor=pointer]:
+              - /url: "#beneficios"
+          - listitem [ref=e13]:
+            - link "Processo" [ref=e14] [cursor=pointer]:
+              - /url: "#selecao"
+          - listitem [ref=e15]:
+            - link "FAQ" [ref=e16] [cursor=pointer]:
+              - /url: "#faq"
+        - link "Quero me candidatar" [ref=e17] [cursor=pointer]:
+          - /url: https://wa.me/555198282431?text=Ol%C3%A1!%20Vi%20o%20site%20da%20CallSeller%20e%20tenho%20interesse%20em%20entrar%20pro%20time%20de%20vendas.%20Podem%20me%20passar%20os%20pr%C3%B3ximos%20passos%3F
+          - text: Quero me candidatar
+          - img [ref=e18]
+    - main [ref=e21]:
+      - generic [ref=e26]:
+        - generic [ref=e27]: Recrutamento · CallSeller
+        - heading "Trabalhe Conosco." [level=1] [ref=e28]:
+          - text: Trabalhe
+          - text: Conosco.
+        - paragraph [ref=e29]: Somos uma operação de vendas de alta performance, referência nacional no Mercado Digital. Inseridos em um ecossistema que movimenta mais de R$ 1 Bilhão por ano.
+        - generic [ref=e30]:
+          - link "Quero me candidatar" [ref=e31] [cursor=pointer]:
+            - /url: https://wa.me/555198282431?text=Ol%C3%A1!%20Vi%20o%20site%20da%20CallSeller%20e%20tenho%20interesse%20em%20entrar%20pro%20time%20de%20vendas.%20Podem%20me%20passar%20os%20pr%C3%B3ximos%20passos%3F
+            - text: Quero me candidatar
+            - img [ref=e32]
+          - button "Assistir vídeo institucional" [ref=e35] [cursor=pointer]:
+            - img [ref=e36]
+            - text: Assistir vídeo institucional
+        - generic [ref=e39]:
+          - generic [ref=e40]: +7 ANOS DE OPERAÇÃO
+          - generic [ref=e41]: +100 VENDEDORES NO BRASIL
+          - generic [ref=e42]: +R$ 7M RECUPERADOS/MÊS
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e46]:
+            - generic "Vídeo institucional — conheça a CallSeller" [ref=e47]
+            - 'button "Expandir e ouvir: Vídeo institucional — conheça a CallSeller" [ref=e48] [cursor=pointer]':
+              - img [ref=e49]
+          - generic [ref=e54]:
+            - generic [ref=e55]: Conheça a operação
+            - heading "A operação que movimenta +R$1 Bilhão por ano." [level=2] [ref=e56]:
+              - text: A operação que movimenta
+              - text: +R$1 Bilhão por ano.
+            - paragraph [ref=e57]: Especialistas em recuperação de vendas e aumento de ticket, conectamos grandes produtores digitais aos seus clientes finais através da nossa tecnologia própria, a plataforma PagaH.
+            - list [ref=e58]:
+              - listitem [ref=e59]:
+                - img [ref=e60]
+                - generic [ref=e63]:
+                  - generic [ref=e64]: "Solidez:"
+                  - text: Operando desde 2017 com crescimento constante.
+              - listitem [ref=e65]:
+                - img [ref=e66]
+                - generic [ref=e69]:
+                  - generic [ref=e70]: "Autoridade:"
+                  - text: Referência reconhecida em conversão e vendas online.
+              - listitem [ref=e71]:
+                - img [ref=e72]
+                - generic [ref=e75]:
+                  - generic [ref=e76]: "Tecnologia própria:"
+                  - text: Operação integrada à plataforma de pagamentos PagaH.
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e79]: R$ 1 BILHÃO
+            - generic [ref=e80]: Ecossistema anual
+          - generic [ref=e81]:
+            - generic [ref=e82]: "2017"
+            - generic [ref=e83]: Fundação
+          - generic [ref=e84]:
+            - generic [ref=e85]: "+50"
+            - generic [ref=e86]: Parceiros
+          - generic [ref=e87]:
+            - generic [ref=e88]: "+100"
+            - generic [ref=e89]: Vendedores
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - generic [ref=e93]: O que você encontra
+          - heading "Vantagens de trabalhar conosco." [level=2] [ref=e94]
+        - generic [ref=e95]:
+          - generic [ref=e97]:
+            - img [ref=e98]
+            - heading "Liberdade geográfica" [level=3] [ref=e101]
+            - paragraph [ref=e102]: Home Office 100% — trabalhe de onde quiser.
+          - generic [ref=e104]:
+            - img [ref=e105]
+            - heading "Projeção de ganhos" [level=3] [ref=e108]
+            - paragraph [ref=e109]: Ganhos acima da média, compatíveis com a sua dedicação.
+          - generic [ref=e111]:
+            - img [ref=e112]
+            - heading "Valorização do resultado" [level=3] [ref=e118]
+            - paragraph [ref=e119]: Reconhecimento real pra quem entrega o que é proposto.
+          - generic [ref=e121]:
+            - img [ref=e122]
+            - heading "Oportunidades internas" [level=3] [ref=e125]
+            - paragraph [ref=e126]: Espaço pra assumir novas responsabilidades conforme o desempenho.
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e130]: Quem vende com a gente
+          - heading "Resultados reais. Operação real." [level=2] [ref=e131]:
+            - text: Resultados reais.
+            - text: Operação real.
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - generic [ref=e135]:
+              - generic "Depoimento · Vendedor 01" [ref=e136]
+              - button "Reproduzir Depoimento · Vendedor 01" [ref=e137] [cursor=pointer]:
+                - img [ref=e139]
+            - generic [ref=e141]:
+              - generic [ref=e142]: Depoimento · Vendedor 01
+              - generic [ref=e143]: Vendedor CallSeller
+          - generic [ref=e144]:
+            - generic [ref=e146]:
+              - generic "Depoimento · Vendedor 02" [ref=e147]
+              - button "Reproduzir Depoimento · Vendedor 02" [ref=e148] [cursor=pointer]:
+                - img [ref=e150]
+            - generic [ref=e152]:
+              - generic [ref=e153]: Depoimento · Vendedor 02
+              - generic [ref=e154]: Vendedor CallSeller
+      - generic [ref=e156]:
+        - generic [ref=e157]:
+          - generic [ref=e158]: Nossa seleção
+          - heading "Foco nas pessoas." [level=2] [ref=e159]
+          - paragraph [ref=e160]: Processo humano e transparente. Não buscamos um padrão rígido — buscamos energia, comunicação e foco em solução.
+        - generic [ref=e161]:
+          - generic [ref=e162]:
+            - generic: "01"
+            - generic [ref=e163]:
+              - img [ref=e164]
+              - heading "Avaliação de perfil" [level=3] [ref=e168]
+              - paragraph [ref=e169]: Todas as candidaturas são analisadas diretamente pelos nossos líderes de vendas.
+          - generic [ref=e170]:
+            - generic: "02"
+            - generic [ref=e171]:
+              - img [ref=e172]
+              - heading "Feedback ativo" [level=3] [ref=e174]
+              - paragraph [ref=e175]: Mantemos um fluxo de retorno ativo após a coleta de informações.
+          - generic [ref=e176]:
+            - generic: "03"
+            - generic [ref=e177]:
+              - img [ref=e178]
+              - heading "Transparência total" [level=3] [ref=e181]
+              - paragraph [ref=e182]: Selecionados participam de entrevistas detalhadas pra entender 100% da empresa.
+      - generic [ref=e184]:
+        - generic [ref=e185]:
+          - generic [ref=e186]: Metodologia de treinamento
+          - heading "Esqueça teorias intermináveis. Nós acreditamos no \"fazer\"." [level=2] [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e189]: Esqueça
+              - generic [ref=e190]: teorias
+              - generic [ref=e191]: intermináveis.
+            - generic [ref=e192]:
+              - generic [ref=e193]: Nós
+              - generic [ref=e194]: acreditamos
+              - generic [ref=e195]: "no"
+              - generic [ref=e196]: "\"fazer\"."
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - generic "Vídeo — metodologia e estrutura de trabalho" [ref=e199]
+            - 'button "Expandir e ouvir: Vídeo — metodologia e estrutura de trabalho" [ref=e200] [cursor=pointer]':
+              - img [ref=e201]
+          - list [ref=e206]:
+            - listitem [ref=e207]:
+              - img [ref=e209]
+              - generic [ref=e211]:
+                - heading "Agilidade" [level=3] [ref=e212]
+                - paragraph [ref=e213]: Foco em contato eficiente e execução diária.
+            - listitem [ref=e214]:
+              - img [ref=e216]
+              - generic [ref=e219]:
+                - heading "Domínio da operação" [level=3] [ref=e220]
+                - paragraph [ref=e221]: Você aprenderá com perfeição a plataforma PagaH e os produtos.
+            - listitem [ref=e222]:
+              - img [ref=e224]
+              - generic [ref=e226]:
+                - heading "Suporte real" [level=3] [ref=e227]
+                - paragraph [ref=e228]: Avaliação constante e feedbacks em tempo real pro seu desenvolvimento.
+        - paragraph [ref=e230]: Nenhuma aula vence a prática.
+      - generic [ref=e232]:
+        - generic [ref=e233]:
+          - generic [ref=e234]: Por trás dos números
+          - heading "A CallSeller em números." [level=2] [ref=e235]
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]: +7 ANOS
+            - generic [ref=e239]: De experiência no mercado digital
+          - generic [ref=e240]:
+            - generic [ref=e241]: +R$ 7M
+            - generic [ref=e242]: Recuperados mensalmente
+          - generic [ref=e243]:
+            - generic [ref=e244]: +50 PARCEIROS
+            - generic [ref=e245]: Impactados pela nossa tecnologia
+          - generic [ref=e246]:
+            - generic [ref=e247]: +100 VENDEDORES
+            - generic [ref=e248]: Atuando em todo o Brasil
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - generic [ref=e252]: Dúvidas
+          - heading "Perguntas frequentes." [level=2] [ref=e253]
+        - generic [ref=e254]:
+          - button "Preciso ter experiência em vendas pra me candidatar?" [ref=e256] [cursor=pointer]:
+            - generic [ref=e257]: Preciso ter experiência em vendas pra me candidatar?
+            - img [ref=e259]
+          - button "Como funciona o trabalho Home Office?" [ref=e261] [cursor=pointer]:
+            - generic [ref=e262]: Como funciona o trabalho Home Office?
+            - img [ref=e264]
+          - button "Como sou acompanhado no dia a dia?" [ref=e266] [cursor=pointer]:
+            - generic [ref=e267]: Como sou acompanhado no dia a dia?
+            - img [ref=e269]
+          - button "Qual o próximo passo após enviar meu contato?" [ref=e271] [cursor=pointer]:
+            - generic [ref=e272]: Qual o próximo passo após enviar meu contato?
+            - img [ref=e274]
+      - generic [ref=e276]:
+        - generic [ref=e277]: Vagas abertas
+        - heading "Pronto pra começar?" [level=2] [ref=e278]:
+          - generic [ref=e279]:
+            - generic [ref=e280]: Pronto
+            - generic [ref=e281]: pra
+          - generic [ref=e283]: começar?
+        - paragraph [ref=e284]: Mande um oi pelo WhatsApp. A gente te conta os próximos passos.
+        - link "Quero me candidatar" [ref=e285] [cursor=pointer]:
+          - /url: https://wa.me/555198282431?text=Ol%C3%A1!%20Vi%20o%20site%20da%20CallSeller%20e%20tenho%20interesse%20em%20entrar%20pro%20time%20de%20vendas.%20Podem%20me%20passar%20os%20pr%C3%B3ximos%20passos%3F
+          - text: Quero me candidatar
+          - img [ref=e286]
+        - paragraph [ref=e289]: Atendimento direto com nossa equipe · Seg-Sex, 9h-18h
+    - contentinfo [ref=e290]:
+      - generic [ref=e291]:
+        - img "CallSeller" [ref=e292]
+        - paragraph [ref=e293]: © 2026 CallSeller · Todos os direitos reservados

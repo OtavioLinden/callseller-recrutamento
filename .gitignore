@@ -27,3 +27,15 @@ Thumbs.db
 .aiox-core/local/
 .claude/settings.local.json
 .aiox/install-log.txt
+
+# Callseller project additions
+.vercel/
+.vite/
+coverage/
+*.lcov
+.cache/
+.parcel-cache/
+
+# Heavy originals kept locally only
+Infos site Callseller/Videos originais/
+

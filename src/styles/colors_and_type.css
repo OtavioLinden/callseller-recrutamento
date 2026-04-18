@@ -1,0 +1,252 @@
+/* ==========================================================================
+   CallSeller — Colors & Type foundations
+   High-performance sales operation. Dark mode by default, green as the
+   only accent. Designed for legibility at distance (dashboards, call-floor
+   monitors) and punch on hero / recruitment landing pages.
+   ========================================================================== */
+
+/* ---------- Web fonts (Google Fonts fallback stack) ----------
+   The brand's headline treatment is a tall, geometric, heavy sans (see
+   "RECRUTAMENTO" plates). Closest widely-available Google Fonts match:
+   Barlow Condensed for display, Inter for UI / body. Flagged as
+   substitutions — we do not have a corporate font file on hand.
+   ---------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- Brand palette ---------- */
+  /* Green — sampled directly from the Recrutamento artwork (#18B818 core).
+     Scale generated around that hue for hover / press / glow states.       */
+  --cs-green-50:  #E8FBE6;
+  --cs-green-100: #C6F5BE;
+  --cs-green-200: #8DEA80;
+  --cs-green-300: #55DF44;
+  --cs-green-400: #2CCE1C;   /* highlight / glow */
+  --cs-green-500: #1FB526;   /* PRIMARY — the "CallSeller green"          */
+  --cs-green-600: #159A1D;   /* hover                                     */
+  --cs-green-700: #0F7A18;   /* press / deep shadow                       */
+  --cs-green-800: #0A5A12;
+  --cs-green-900: #053008;   /* backgrounds / vignette edges              */
+  --cs-green-950: #021904;
+
+  /* Neutrals — true black backplate paired with cool warm-gray for copy.
+     The "cinza" the brand uses is the silver sheen around the 3D logo
+     and the muted shirt-grey from photography.                           */
+  --cs-ink-0:    #000000;    /* pure black, outermost page background     */
+  --cs-ink-50:   #0A0C0A;    /* panel base                                */
+  --cs-ink-100:  #111411;    /* cards on dark                             */
+  --cs-ink-200:  #1A1E1A;    /* raised surfaces                           */
+  --cs-ink-300:  #262B26;    /* hairlines on dark                         */
+  --cs-ink-400:  #3A403A;    /* dividers                                  */
+  --cs-ink-500:  #5A615A;    /* muted text on dark                        */
+  --cs-ink-600:  #8B918B;    /* secondary text                            */
+  --cs-ink-700:  #B6BAB6;    /* body text on dark                         */
+  --cs-ink-800:  #D9DCD9;    /* high-contrast body                        */
+  --cs-ink-900:  #F1F3F1;    /* headlines on dark                         */
+  --cs-ink-1000: #FFFFFF;
+
+  /* Semantic */
+  --cs-success: var(--cs-green-500);
+  --cs-warn:    #F2B705;
+  --cs-danger:  #E5484D;
+  --cs-info:    #5B9BD5;
+
+  /* ---------- Semantic surfaces (dark = default) ---------- */
+  --bg-page:        var(--cs-ink-0);
+  --bg-surface:     var(--cs-ink-100);
+  --bg-raised:      var(--cs-ink-200);
+  --bg-inset:       var(--cs-ink-50);
+  --bg-accent:      var(--cs-green-500);
+  --bg-accent-soft: color-mix(in oklab, var(--cs-green-500) 14%, transparent);
+
+  --fg-primary:     var(--cs-ink-900);
+  --fg-secondary:   var(--cs-ink-700);
+  --fg-muted:       var(--cs-ink-600);
+  --fg-disabled:    var(--cs-ink-500);
+  --fg-accent:      var(--cs-green-400);
+  --fg-on-accent:   #04170A;    /* near-black on green — WCAG passes AA+  */
+
+  --border-hairline: rgba(255,255,255,0.08);
+  --border-default:  rgba(255,255,255,0.14);
+  --border-strong:   rgba(255,255,255,0.24);
+  --border-accent:   var(--cs-green-500);
+
+  /* Signature glow — used on CTAs, logo marks, focus rings.
+     Layered so it reads as a real light source, not a drop shadow.        */
+  --glow-green-sm:  0 0 0 1px rgba(31,181,38,.35),
+                    0 0 12px rgba(31,181,38,.35);
+  --glow-green-md:  0 0 0 1px rgba(31,181,38,.45),
+                    0 0 18px rgba(31,181,38,.45),
+                    0 0 38px rgba(31,181,38,.25);
+  --glow-green-lg:  0 0 0 1px rgba(31,181,38,.55),
+                    0 0 28px rgba(44,206,28,.55),
+                    0 0 64px rgba(31,181,38,.35);
+
+  /* Standard shadows (mostly used on light panels or cards over gradients) */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.35);
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.4);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.5);
+  --shadow-lg: 0 20px 48px rgba(0,0,0,.6);
+
+  /* ---------- Radii ---------- */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+  --radius-2xl: 32px;
+  --radius-pill: 999px;
+
+  /* ---------- Spacing (4px base grid) ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ---------- Typography tokens ---------- */
+  --font-display: 'Barlow Condensed', 'Oswald', 'Impact', system-ui, sans-serif;
+  --font-body:    'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Fluid type scale — display chops sized for call-floor LEDs / hero bursts */
+  --fs-display-xl: clamp(56px, 8vw, 128px);
+  --fs-display-lg: clamp(44px, 6vw, 88px);
+  --fs-display-md: clamp(36px, 4.5vw, 64px);
+  --fs-h1: 40px;
+  --fs-h2: 30px;
+  --fs-h3: 22px;
+  --fs-h4: 18px;
+  --fs-body-lg: 17px;
+  --fs-body:    15px;
+  --fs-body-sm: 13px;
+  --fs-caption: 12px;
+  --fs-micro:   11px;
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.2;
+  --lh-body:  1.55;
+  --lh-loose: 1.7;
+
+  --tracking-display: -0.01em;
+  --tracking-caps:     0.08em;
+  --tracking-caps-lg:  0.14em;
+}
+
+/* ---------- Optional light theme (used on light recruitment pages) ---------- */
+[data-theme="light"] {
+  --bg-page:        #FFFFFF;
+  --bg-surface:     #FAFBFA;
+  --bg-raised:      #FFFFFF;
+  --bg-inset:       #F1F3F1;
+  --bg-accent-soft: color-mix(in oklab, var(--cs-green-500) 12%, white);
+
+  --fg-primary:     #0A0C0A;
+  --fg-secondary:   #2A2E2A;
+  --fg-muted:       #5A615A;
+  --fg-disabled:    #A4A9A4;
+  --fg-accent:      var(--cs-green-600);
+  --fg-on-accent:   #FFFFFF;
+
+  --border-hairline: rgba(0,0,0,0.06);
+  --border-default:  rgba(0,0,0,0.12);
+  --border-strong:   rgba(0,0,0,0.22);
+}
+
+/* ==========================================================================
+   Semantic element styles — drop this sheet onto a page and headings,
+   paragraphs, code, links, kbd, buttons all inherit the brand voice.
+   ========================================================================== */
+
+html, body {
+  background: var(--bg-page);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display — the "RECRUTAMENTO" treatment. Condensed, heavy, UPPERCASE,
+   tight leading. Use for hero plates + section headers that need to feel
+   like a stadium scoreboard. Prefer UPPER over Title case.                */
+.cs-display,
+.cs-display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--fg-primary);
+}
+.cs-display-lg { font: 800 var(--fs-display-lg)/var(--lh-tight) var(--font-display); letter-spacing: var(--tracking-display); text-transform: uppercase; }
+.cs-display-md { font: 700 var(--fs-display-md)/var(--lh-snug)  var(--font-display); letter-spacing: var(--tracking-display); text-transform: uppercase; }
+
+h1, .cs-h1 { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-h1); line-height: var(--lh-snug); letter-spacing: var(--tracking-display); text-transform: uppercase; color: var(--fg-primary); margin: 0; }
+h2, .cs-h2 { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-h2); line-height: var(--lh-snug); letter-spacing: 0; text-transform: uppercase; color: var(--fg-primary); margin: 0; }
+h3, .cs-h3 { font-family: var(--font-body);    font-weight: 700; font-size: var(--fs-h3); line-height: var(--lh-snug); color: var(--fg-primary); margin: 0; }
+h4, .cs-h4 { font-family: var(--font-body);    font-weight: 600; font-size: var(--fs-h4); line-height: var(--lh-snug); color: var(--fg-primary); margin: 0; }
+
+p, .cs-body    { font-size: var(--fs-body); line-height: var(--lh-body); color: var(--fg-secondary); margin: 0 0 12px; }
+.cs-body-lg    { font-size: var(--fs-body-lg); line-height: var(--lh-body); color: var(--fg-secondary); }
+.cs-body-sm    { font-size: var(--fs-body-sm); line-height: var(--lh-body); color: var(--fg-muted); }
+small, .cs-caption { font-size: var(--fs-caption); line-height: var(--lh-body); color: var(--fg-muted); }
+
+.cs-eyebrow,
+.cs-overline {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-caps-lg);
+  text-transform: uppercase;
+  color: var(--fg-accent);
+}
+
+code, kbd, pre, .cs-mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+code {
+  background: var(--bg-raised);
+  border: 1px solid var(--border-hairline);
+  padding: 1px 6px;
+  border-radius: var(--radius-xs);
+  color: var(--fg-accent);
+}
+
+a {
+  color: var(--fg-accent);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 40%, transparent);
+  transition: color 120ms ease, border-color 120ms ease;
+}
+a:hover   { color: var(--cs-green-300); border-bottom-color: currentColor; }
+a:active  { color: var(--cs-green-600); }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--border-default);
+  margin: var(--space-8) 0;
+}
+
+::selection {
+  background: var(--cs-green-500);
+  color: var(--fg-on-accent);
+}
+
+/* Focus ring — green halo, never blue browser default */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--glow-green-md);
+  border-radius: var(--radius-sm);
+}
