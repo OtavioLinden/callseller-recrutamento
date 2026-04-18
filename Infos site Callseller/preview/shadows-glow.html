@@ -1,0 +1,16 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg-page);}
+  .card{padding:30px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:center;justify-items:center;}
+  .g{width:110px;height:70px;border-radius:14px;background:var(--cs-green-500);}
+  .sm{box-shadow:var(--glow-green-sm)}
+  .md{box-shadow:var(--glow-green-md)}
+  .lg{box-shadow:var(--glow-green-lg)}
+  .cap{position:absolute;bottom:6px;font-family:var(--font-mono);font-size:10px;color:var(--fg-muted);}
+  .wrap{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .wrap span{font-family:var(--font-mono);font-size:10px;color:var(--fg-muted);letter-spacing:.04em;}
+</style></head><body><div class="card">
+  <div class="wrap"><div class="g sm"></div><span>glow · sm</span></div>
+  <div class="wrap"><div class="g md"></div><span>glow · md</span></div>
+  <div class="wrap"><div class="g lg"></div><span>glow · lg</span></div>
+</div></body></html>

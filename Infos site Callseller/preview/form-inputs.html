@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg-page);}
+  .card{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  label{display:flex;flex-direction:column;gap:6px;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-muted);}
+  input,select{background:var(--bg-surface);border:1px solid var(--border-default);border-radius:10px;padding:12px 14px;color:var(--fg-primary);font-family:var(--font-body);font-size:14px;outline:none;transition:all .15s;}
+  input:focus,select:focus{border-color:var(--cs-green-500);box-shadow:var(--glow-green-sm);}
+  input.err{border-color:var(--cs-danger);}
+  .help{font-family:var(--font-body);font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--fg-muted);}
+</style></head><body><div class="card">
+  <label>Nome completo<input value="Rafael S. Oliveira" /></label>
+  <label>Whatsapp<input placeholder="(00) 00000-0000" /></label>
+  <label>Estado<select><option>São Paulo</option></select></label>
+  <label>E-mail<input class="err" value="rafael@" /><span class="help">E-mail inválido</span></label>
+</div></body></html>

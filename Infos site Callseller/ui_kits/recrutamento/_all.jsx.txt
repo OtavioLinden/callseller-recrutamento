@@ -1,0 +1,359 @@
+
+// ========== Navbar ==========
+// Sticky top navigation bar — logo left, nav center (optional on mobile), primary CTA right.
+function Navbar() {
+  return (
+    <header className="cs-nav">
+      <a className="cs-nav__brand" href="#top">
+        <img src="../../assets/logo-horizontal-white.png" alt="CallSeller" />
+      </a>
+      <nav className="cs-nav__links">
+        <a href="#quem-somos">Quem somos</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#processo">Processo</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a className="cs-btn cs-btn--primary cs-btn--sm" href="#candidatar">
+        Quero me candidatar <i data-lucide="arrow-up-right" />
+      </a>
+    </header>
+  );
+}
+
+Object.assign(window, { Navbar });
+
+// ========== Hero ==========
+// Hero — the "TRABALHE CONOSCO" plate. Green glow behind, radial backdrop, dual CTA.
+function Hero() {
+  return (
+    <section className="cs-hero" id="top">
+      <div className="cs-hero__bg" />
+      <div className="cs-hero__inner">
+        <div className="cs-eyebrow">Recrutamento · CallSeller</div>
+        <h1 className="cs-hero__title">
+          Trabalhe<br/>conosco.
+        </h1>
+        <p className="cs-hero__lede">
+          Somos uma operação de vendas de alta performance, referência nacional
+          no Mercado Digital. Inseridos em um ecossistema que movimenta mais de
+          {' '}<b>R$ 1 Bilhão por ano</b>.
+        </p>
+        <div className="cs-hero__cta">
+          <a className="cs-btn cs-btn--primary cs-btn--lg" href="#candidatar">
+            Quero me candidatar <i data-lucide="arrow-up-right" />
+          </a>
+          <a className="cs-btn cs-btn--secondary cs-btn--lg" href="#video">
+            <i data-lucide="play-circle" /> Assistir vídeo institucional
+          </a>
+        </div>
+        <div className="cs-hero__proof">
+          <span><b>+7 anos</b> de operação</span>
+          <span className="sep" />
+          <span><b>+100</b> vendedores no Brasil</span>
+          <span className="sep" />
+          <span><b>+R$ 7M</b> recuperados/mês</span>
+        </div>
+      </div>
+      <img className="cs-hero__plate" src="../../assets/recrutamento-radial.png" alt="" />
+    </section>
+  );
+}
+
+Object.assign(window, { Hero });
+
+// ========== WhoWeAre ==========
+// "Quem é a CallSeller?" — institutional block with 3 pillar cards.
+function WhoWeAre() {
+  const pillars = [
+    { icon: 'shield-check', title: 'Solidez',            body: 'Operando desde 2017 com crescimento constante.' },
+    { icon: 'award',        title: 'Autoridade',         body: 'Referência reconhecida em conversão e vendas online.' },
+    { icon: 'cpu',          title: 'Tecnologia Própria', body: 'Integrada à nossa plataforma de pagamentos, a PagaH.' },
+  ];
+  return (
+    <section className="cs-section" id="quem-somos">
+      <div className="cs-section__head">
+        <div className="cs-eyebrow">Quem é a CallSeller</div>
+        <h2 className="cs-section__title">Especialistas em recuperação<br/>de vendas e upsell.</h2>
+        <p className="cs-section__lede">
+          Conectamos grandes produtores digitais aos seus clientes finais através
+          da nossa tecnologia própria, a plataforma <b>PagaH</b>.
+        </p>
+      </div>
+      <div className="cs-pillars">
+        {pillars.map(p => (
+          <article className="cs-pillar" key={p.icon}>
+            <div className="cs-pillar__icon"><i data-lucide={p.icon} /></div>
+            <h3 className="cs-pillar__title">{p.title}</h3>
+            <p className="cs-pillar__body">{p.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { WhoWeAre });
+
+// ========== Benefits ==========
+// Benefits — "O QUE VOCÊ ENCONTRA" — 4-up card grid with large Lucide icons.
+function Benefits() {
+  const items = [
+    { icon: 'globe',          title: 'Liberdade Geográfica', body: 'Trabalho 100% Home Office. Trabalhe de onde quiser.' },
+    { icon: 'trending-up',    title: 'Projeção de Ganhos',   body: 'Possibilidade de ganhos acima da média, compatíveis com a sua dedicação.' },
+    { icon: 'trophy',         title: 'Valorização do Resultado', body: 'Reconhecimento real para quem entrega o que é proposto.' },
+    { icon: 'arrow-up-right', title: 'Oportunidades Internas',   body: 'Espaço para assumir novas responsabilidades conforme o seu desempenho.' },
+  ];
+  return (
+    <section className="cs-section cs-section--inset" id="beneficios">
+      <div className="cs-section__head">
+        <div className="cs-eyebrow">Trabalhando com a gente</div>
+        <h2 className="cs-section__title">O que você encontra<br/>ao trabalhar conosco.</h2>
+      </div>
+      <div className="cs-benefits">
+        {items.map(it => (
+          <article className="cs-benefit" key={it.icon}>
+            <div className="cs-benefit__icon"><i data-lucide={it.icon} /></div>
+            <h3 className="cs-benefit__title">{it.title}</h3>
+            <p className="cs-benefit__body">{it.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Benefits });
+
+// ========== Process ==========
+// Selection process ("NOSSA SELEÇÃO DE TALENTOS") — numbered stepper.
+function Process() {
+  const steps = [
+    { n: '01', icon: 'clipboard-check',        title: 'Avaliação de Perfil',  body: 'Todas as candidaturas são analisadas diretamente por nossos líderes de vendas.' },
+    { n: '02', icon: 'message-circle-check',   title: 'Feedback Ativo',       body: 'Valorizamos seu tempo. Mantemos um fluxo de retorno após a coleta de informações.' },
+    { n: '03', icon: 'eye',                    title: 'Transparência Total',  body: 'Selecionados participam de entrevistas para entenderem 100% da empresa e do modelo.' },
+  ];
+  return (
+    <section className="cs-section" id="processo">
+      <div className="cs-section__head">
+        <div className="cs-eyebrow">Processo seletivo</div>
+        <h2 className="cs-section__title">Seleção humana.<br/>Transparente. Rápida.</h2>
+        <p className="cs-section__lede">
+          Não buscamos um padrão rígido — buscamos perfis com energia, boa
+          comunicação e foco em solução.
+        </p>
+      </div>
+      <ol className="cs-steps">
+        {steps.map(s => (
+          <li className="cs-step" key={s.n}>
+            <div className="cs-step__num">{s.n}</div>
+            <div className="cs-step__ic"><i data-lucide={s.icon} /></div>
+            <div className="cs-step__body">
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+Object.assign(window, { Process });
+
+// ========== Training ==========
+// Training methodology + big-claim plate — "NENHUMA AULA VENCE A PRÁTICA."
+function Training() {
+  const items = [
+    { icon: 'zap',        title: 'Agilidade',             body: 'Foco em contato eficiente e execução diária.' },
+    { icon: 'settings',   title: 'Domínio da Operação',   body: 'Você aprenderá com perfeição a plataforma PagaH e os produtos.' },
+    { icon: 'headphones', title: 'Suporte Real',          body: 'Avaliação constante e feedbacks em tempo real para o seu desenvolvimento.' },
+  ];
+  return (
+    <section className="cs-section cs-section--dark" id="treinamento">
+      <div className="cs-section__head">
+        <div className="cs-eyebrow">Metodologia de treinamento</div>
+        <h2 className="cs-section__title">Esqueça teorias intermináveis.<br/>Nós acreditamos no <em>"fazer".</em></h2>
+        <p className="cs-section__lede">
+          Trabalhamos com agilidade e contato rápido com o cliente. Por isso,
+          nosso treinamento é <b>100% Hands-on (mão na massa).</b>
+        </p>
+      </div>
+      <div className="cs-benefits">
+        {items.map(it => (
+          <article className="cs-benefit" key={it.icon}>
+            <div className="cs-benefit__icon"><i data-lucide={it.icon} /></div>
+            <h3 className="cs-benefit__title">{it.title}</h3>
+            <p className="cs-benefit__body">{it.body}</p>
+          </article>
+        ))}
+      </div>
+      <div className="cs-bigclaim">
+        <span>Nenhuma aula</span>
+        <span className="cs-bigclaim__accent">vence a prática.</span>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Training });
+
+// ========== Stats ==========
+// "CALLSELLER EM NÚMEROS" — 4 large stat cards, one accented.
+function Stats() {
+  return (
+    <section className="cs-section" id="numeros">
+      <div className="cs-section__head">
+        <div className="cs-eyebrow">Callseller em números</div>
+        <h2 className="cs-section__title">A operação<br/>em escala.</h2>
+      </div>
+      <div className="cs-stats">
+        <article className="cs-stat">
+          <div className="cs-stat__ic"><i data-lucide="calendar" /></div>
+          <div className="cs-stat__num">+7 anos</div>
+          <div className="cs-stat__lab">de experiência no mercado digital</div>
+        </article>
+        <article className="cs-stat cs-stat--accent">
+          <div className="cs-stat__ic"><i data-lucide="trending-up" /></div>
+          <div className="cs-stat__num">+R$ 7M</div>
+          <div className="cs-stat__lab">em vendas recuperadas / mês</div>
+        </article>
+        <article className="cs-stat">
+          <div className="cs-stat__ic"><i data-lucide="handshake" /></div>
+          <div className="cs-stat__num">+50</div>
+          <div className="cs-stat__lab">parceiros impactados pela tecnologia</div>
+        </article>
+        <article className="cs-stat">
+          <div className="cs-stat__ic"><i data-lucide="users" /></div>
+          <div className="cs-stat__num">+100</div>
+          <div className="cs-stat__lab">vendedores atuando em todo o Brasil</div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Stats });
+
+// ========== FAQ ==========
+// FAQ — accordion with green focus glow on open.
+function FAQ() {
+  const [open, setOpen] = React.useState(0);
+  const items = [
+    { q: 'Preciso ter experiência em vendas para me candidatar?',
+      a: 'Não. Nós fornecemos o treinamento necessário para você dominar nossa plataforma e metodologia, desde que você tenha o perfil e a vontade de aprender.' },
+    { q: 'Como funciona o trabalho Home Office?',
+      a: 'Você trabalha de onde quiser, precisando apenas de um computador, internet estável e um headset. Toda a comunicação e suporte são feitos de forma online.' },
+    { q: 'Como sou acompanhado no dia a dia?',
+      a: 'Nossos líderes de vendas acompanham a operação em tempo real, fornecendo feedbacks constantes e suporte para que você consiga atingir seus resultados.' },
+    { q: 'Qual o próximo passo após enviar meus dados?',
+      a: 'Nossa equipe de recrutamento avalia todos os perfis. Se o seu perfil estiver alinhado com o que buscamos, entraremos em contato para as próximas etapas.' },
+  ];
+  return (
+    <section className="cs-section" id="faq">
+      <div className="cs-section__head">
+        <div className="cs-eyebrow">FAQ</div>
+        <h2 className="cs-section__title">Perguntas frequentes.</h2>
+      </div>
+      <div className="cs-faq">
+        {items.map((it, i) => (
+          <details key={i} open={open === i} onClick={(e)=>{e.preventDefault();setOpen(open===i?-1:i);}}>
+            <summary>
+              <span>{it.q}</span>
+              <i data-lucide={open===i ? 'minus' : 'plus'} />
+            </summary>
+            <p>{it.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { FAQ });
+
+// ========== ApplyForm ==========
+// Candidate form — the closing CTA block. Dual panel: hero plate left, form right.
+function ApplyForm() {
+  const [submitted, setSubmitted] = React.useState(false);
+  return (
+    <section className="cs-section cs-section--apply" id="candidatar">
+      <div className="cs-apply">
+        <div className="cs-apply__left">
+          <img src="../../assets/recrutamento-3d-dark.png" alt="Recrutamento"/>
+          <h2 className="cs-apply__title">Pronto para começar?</h2>
+          <p>Preencha o formulário. Nossa equipe de recrutamento entra em contato.</p>
+          <ul className="cs-apply__list">
+            <li><i data-lucide="check" /> Análise em até 3 dias úteis</li>
+            <li><i data-lucide="check" /> Retorno mesmo se não for aprovado</li>
+            <li><i data-lucide="check" /> Sem taxas, sem burocracia</li>
+          </ul>
+        </div>
+        <form className="cs-form" onSubmit={(e)=>{e.preventDefault();setSubmitted(true);}}>
+          {submitted ? (
+            <div className="cs-form__ok">
+              <div className="cs-form__okic"><i data-lucide="check-circle-2" /></div>
+              <h3>Candidatura enviada.</h3>
+              <p>Nossa equipe entra em contato em breve. Fique de olho no seu WhatsApp.</p>
+            </div>
+          ) : (
+            <>
+              <label>Nome completo<input required defaultValue="" placeholder="Seu nome" /></label>
+              <label>WhatsApp<input required placeholder="(00) 00000-0000" /></label>
+              <label>E-mail<input required type="email" placeholder="voce@email.com" /></label>
+              <label>Estado
+                <select defaultValue="">
+                  <option value="" disabled>Selecione…</option>
+                  <option>São Paulo</option><option>Rio de Janeiro</option>
+                  <option>Minas Gerais</option><option>Paraná</option>
+                  <option>Outro</option>
+                </select>
+              </label>
+              <label>Já tem experiência com vendas?
+                <select defaultValue="nao">
+                  <option value="nao">Não, estou começando</option>
+                  <option>Sim, menos de 1 ano</option>
+                  <option>Sim, mais de 1 ano</option>
+                </select>
+              </label>
+              <button type="submit" className="cs-btn cs-btn--primary cs-btn--lg cs-btn--block">
+                Quero me candidatar <i data-lucide="arrow-up-right" />
+              </button>
+              <small>Ao enviar, você concorda com nossa política de privacidade.</small>
+            </>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { ApplyForm });
+
+// ========== Footer ==========
+// Footer — minimal, logo + social + legal.
+function Footer() {
+  return (
+    <footer className="cs-footer">
+      <div className="cs-footer__top">
+        <img src="../../assets/logo-horizontal-white.png" alt="CallSeller" className="cs-footer__logo" />
+        <nav>
+          <a href="#quem-somos">Quem somos</a>
+          <a href="#beneficios">Benefícios</a>
+          <a href="#processo">Processo</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div className="cs-footer__socials">
+          <a href="#"><i data-lucide="instagram" /></a>
+          <a href="#"><i data-lucide="linkedin" /></a>
+          <a href="#"><i data-lucide="youtube" /></a>
+        </div>
+      </div>
+      <div className="cs-footer__legal">
+        <span>© {new Date().getFullYear()} CallSeller · Todos os direitos reservados</span>
+        <span>Integrado à plataforma PagaH</span>
+      </div>
+    </footer>
+  );
+}
+
+Object.assign(window, { Footer });

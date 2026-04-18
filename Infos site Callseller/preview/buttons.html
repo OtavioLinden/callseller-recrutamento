@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--bg-page);}
+  .card{padding:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+  button{font-family:var(--font-body);font-weight:700;font-size:14px;letter-spacing:.05em;text-transform:uppercase;border:0;cursor:pointer;padding:12px 20px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;transition:all .18s cubic-bezier(.2,.8,.2,1);}
+  .primary{background:var(--cs-green-500);color:var(--fg-on-accent);box-shadow:var(--glow-green-md);}
+  .primary:hover{background:var(--cs-green-600);box-shadow:var(--glow-green-lg);}
+  .primary:active{background:var(--cs-green-700);transform:scale(.99);}
+  .secondary{background:transparent;color:var(--fg-primary);border:1px solid var(--border-strong);}
+  .secondary:hover{border-color:var(--cs-green-500);color:var(--cs-green-400);}
+  .ghost{background:transparent;color:var(--fg-accent);}
+  .ghost:hover{color:var(--cs-green-300);}
+  .pill{border-radius:999px;}
+</style></head><body><div class="card">
+  <button class="primary">Quero me candidatar →</button>
+  <button class="primary pill">Aplicar agora</button>
+  <button class="secondary">Assistir vídeo</button>
+  <button class="ghost">Saiba mais</button>
+</div></body></html>
