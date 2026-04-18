@@ -1,0 +1,22 @@
+# Project sources (Vercel only needs dist + node_modules for build)
+Infos site Callseller/
+.aiox-core/
+squads/
+docs/
+.claude/
+.github/
+
+# Dev artifacts
+node_modules/
+.git/
+.vite/
+.cache/
+coverage/
+
+# Original heavy videos
+Videos originais/
+
+# Local configs
+.env
+.env.local
+CLAUDE.md

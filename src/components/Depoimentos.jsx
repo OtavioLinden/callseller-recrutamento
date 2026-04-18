@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 
 const VIDEOS = [
-  { id: 'd1', src: '/videos/depoimento1.mp4', tag: 'Depoimento · Vendedor 01', name: 'Vendedor CallSeller' },
-  { id: 'd2', src: '/videos/depoimento2.mp4', tag: 'Depoimento · Vendedor 02', name: 'Vendedor CallSeller' },
+  { id: 'd1', src: '/videos/depoimento1.mp4', tag: 'Depoimento · Vendedor CallSeller', name: 'Ramon' },
+  { id: 'd2', src: '/videos/depoimento2.mp4', tag: 'Depoimento · Vendedor CallSeller', name: 'Marcos' },
 ];
 
 export function Depoimentos() {

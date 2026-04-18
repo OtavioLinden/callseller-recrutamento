@@ -45,7 +45,7 @@ export function Selecao() {
             Foco nas pessoas.
           </h2>
           <p className="text-cs-ink-700 max-w-[560px] mx-auto">
-            Processo humano e transparente. Não buscamos um padrão rígido — buscamos energia, comunicação e foco em solução.
+            Processo humano e transparente. Não buscamos um padrão — buscamos energia, comunicação e foco em solução.
           </p>
         </div>
 
