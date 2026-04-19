@@ -6,8 +6,8 @@ import { Icon } from './Icon';
  * VideoPlayer — dois modos, sempre inline (sem fullscreen).
  *
  *  - mode="autoplay": vídeo começa muted + loop quando entra na viewport.
- *    Click em qualquer lugar do vídeo = toggle mute. Indicador de estado
- *    (speaker) pequeno no canto superior direito.
+ *    Click 1 = ativa som + rebobina. Click 2 = pausa. Click 3 = retoma.
+ *    Indicador de estado (volume/pause/play) discreto no canto superior direito.
  *
  *  - mode="click": poster até o primeiro click. Click play = começa a tocar
  *    com áudio + controles nativos. Subsequentes clicks usam controles nativos.
@@ -35,6 +35,7 @@ export function VideoPlayer({
   const { ref: containerRef, isInView } = useInView({ threshold: 0.5 });
   const [started, setStarted] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [paused, setPaused] = useState(false);
   const firstUnmuteRef = useRef(true);
 
   // Autoplay: play/pause ao entrar/sair da viewport
@@ -62,21 +63,28 @@ export function VideoPlayer({
     return () => window.removeEventListener(AUDIO_EVENT, onClaim);
   }, [uid]);
 
-  const toggleMute = () => {
+  const handleVideoClick = () => {
     const vid = videoRef.current;
     if (!vid) return;
-    const willBeMuted = !vid.muted;
-    vid.muted = willBeMuted;
-    setMuted(willBeMuted);
-    if (!willBeMuted) {
-      // Primeira vez que o usuário ativa o áudio, rebobina o vídeo pro começo
-      // pra ele escutar desde o início (o loop muted pode ter rodado um tempo).
+    if (vid.muted) {
+      // Primeiro clique: ativa som e rebobina
+      vid.muted = false;
+      setMuted(false);
       if (firstUnmuteRef.current) {
         try { vid.currentTime = 0; } catch {}
         firstUnmuteRef.current = false;
       }
       claimAudio(uid);
       vid.play().catch(() => {});
+      setPaused(false);
+    } else if (!vid.paused) {
+      // Com som + tocando → pausa
+      vid.pause();
+      setPaused(true);
+    } else {
+      // Pausado → retoma
+      vid.play().catch(() => {});
+      setPaused(false);
     }
   };
 
@@ -101,7 +109,7 @@ export function VideoPlayer({
         ref={videoRef}
         className={`w-full h-full object-cover block ${mode === 'autoplay' ? 'cursor-pointer' : ''}`}
         muted
-        {...(mode === 'autoplay' ? { loop: true, onClick: toggleMute } : {})}
+        {...(mode === 'autoplay' ? { loop: true, onClick: handleVideoClick } : {})}
         playsInline
         preload="metadata"
         poster={poster}
@@ -130,16 +138,16 @@ export function VideoPlayer({
         </button>
       )}
 
-      {/* Indicador de mute — autoplay. Discreto, toggle também via click-no-video. */}
+      {/* Indicador de estado — autoplay. Discreto, mesmo handler do click-no-video. */}
       {mode === 'autoplay' && (
         <button
           type="button"
-          onClick={toggleMute}
-          aria-label={muted ? `Ativar som: ${ariaLabel}` : `Silenciar: ${ariaLabel}`}
+          onClick={handleVideoClick}
+          aria-label={muted ? `Ativar som: ${ariaLabel}` : paused ? `Retomar: ${ariaLabel}` : `Pausar: ${ariaLabel}`}
           className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-cs-green-500 hover:text-cs-ink-0 transition-all duration-150 ease-brand !border-0"
           style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.08)' }}
         >
-          <Icon name={muted ? 'volume-x' : 'volume-2'} size={18} />
+          <Icon name={muted ? 'volume-x' : paused ? 'play' : 'pause'} size={18} />
         </button>
       )}
     </div>
