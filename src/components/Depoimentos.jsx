@@ -2,22 +2,22 @@ import { useState } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 
 const VIDEOS = [
-  { id: 'd1', src: '/videos/depoimento1.mp4', tag: 'Depoimento · Vendedor CallSeller', name: 'Ramon' },
-  { id: 'd2', src: '/videos/depoimento2.mp4', tag: 'Depoimento · Vendedor CallSeller', name: 'Marcos' },
+  { id: 'd1', src: '/videos/depoimento1.mp4', tag: 'Vendedor CallSeller', name: 'Ramon' },
+  { id: 'd2', src: '/videos/depoimento2.mp4', tag: 'Vendedor CallSeller', name: 'Marcos' },
 ];
 
 export function Depoimentos() {
   const [activeId] = useState(null);
 
   return (
-    <section id="depoimentos" className="relative py-24 md:py-32 px-4 md:px-6">
+    <section id="depoimentos" className="relative py-16 md:py-32 px-4 md:px-6">
       <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="text-cs-green-400 text-xs font-bold uppercase tracking-[0.14em] mb-4">
             Quem vende com a gente
           </div>
           <h2 className="font-display font-bold uppercase text-cs-ink-900 text-4xl md:text-5xl leading-[1.05]">
-            Resultados reais.<br />Operação real.
+            Resultados reais<br />Operação real
           </h2>
         </div>
 

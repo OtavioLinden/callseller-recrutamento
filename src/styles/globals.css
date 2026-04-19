@@ -73,3 +73,129 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .cs-scanline::before { animation: none; display: none; }
 }
+
+/* Hero WebGL glow — reduce intensity on mobile so text stays readable */
+.cs-hero-canvas { transition: opacity 200ms ease; }
+@media (max-width: 768px) {
+  .cs-hero-canvas { opacity: 0.45; }
+}
+
+/* Hero content readability shield — subtle radial darken behind text on mobile */
+.cs-hero-shield {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 60% at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 35%, transparent 70%);
+  display: none;
+}
+@media (max-width: 768px) {
+  .cs-hero-shield { display: block; }
+}
+
+/* Logo mark watermark — opaque logo behind hero content, subtle */
+.cs-hero-watermark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(120vw, 900px);
+  max-width: none;
+  height: auto;
+  opacity: 0.08;
+  pointer-events: none;
+  filter: blur(0.5px);
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .cs-hero-watermark {
+    width: 180vw;
+    opacity: 0.1;
+  }
+}
+
+/* Scroll hint — bouncing chevron at bottom of hero, fades as user scrolls */
+@keyframes cs-bounce-soft {
+  0%, 100% { transform: translateY(0); opacity: 0.75; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+.cs-bounce {
+  animation: cs-bounce-soft 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+.cs-scroll-hint {
+  animation: cs-bounce-soft 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+             cs-fade-on-scroll 1ms linear;
+  animation-timeline: scroll(root);
+  animation-range: 0 50vh;
+}
+/* Fallback for browsers without scroll-timeline — use a simple media query to hide after initial */
+@keyframes cs-fade-on-scroll {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-bounce, .cs-scroll-hint { animation: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CTA final — Spotlight + anéis concêntricos (sinal/batimento)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Spotlight radial — respira lentamente */
+.cs-ctafinal-spotlight {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(110vw, 900px);
+  height: min(110vw, 900px);
+  transform: translate(-50%, -50%) scale(0.95);
+  background: radial-gradient(
+    circle,
+    rgba(31, 181, 38, 0.32) 0%,
+    rgba(31, 181, 38, 0.14) 25%,
+    rgba(31, 181, 38, 0.04) 50%,
+    transparent 70%
+  );
+  animation: cs-spotlight-breathe 5s cubic-bezier(0.4, 0, 0.4, 1) infinite;
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+@keyframes cs-spotlight-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.75; }
+  50%      { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+/* Anéis concêntricos — expandem do centro, desaparecem nas bordas */
+.cs-ctafinal-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(60vw, 380px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1.5px solid rgba(44, 206, 28, 0.6);
+  transform: translate(-50%, -50%) scale(0);
+  animation: cs-ring-expand 6s cubic-bezier(0.3, 0.6, 0.2, 1) infinite;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+@keyframes cs-ring-expand {
+  0%   { transform: translate(-50%, -50%) scale(0.15); opacity: 0; border-width: 2px; }
+  10%  { opacity: 0.8; }
+  60%  { opacity: 0.3; }
+  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; border-width: 0.5px; }
+}
+
+.cs-ctafinal-ring--1 { animation-delay: 0s; }
+.cs-ctafinal-ring--2 { animation-delay: 2s; }
+.cs-ctafinal-ring--3 { animation-delay: 4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-ctafinal-spotlight {
+    animation: none;
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .cs-ctafinal-ring { display: none; }
+}

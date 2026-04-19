@@ -39,7 +39,7 @@ function GlowPlane({ revealRef, mouseRef }) {
 export function HeroCanvas({ revealRef, mouseRef }) {
   return (
     <Canvas
-      className="!absolute inset-0"
+      className="!absolute inset-0 cs-hero-canvas"
       orthographic
       camera={{ zoom: 1, position: [0, 0, 1] }}
       gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}

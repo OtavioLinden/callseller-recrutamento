@@ -44,7 +44,7 @@ export function Operacao() {
   }, [reduced]);
 
   return (
-    <section id="operacao" className="relative py-24 md:py-32 px-4 md:px-6">
+    <section id="operacao" className="relative py-16 md:py-32 px-4 md:px-6">
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
           <VideoPlayer
@@ -61,10 +61,10 @@ export function Operacao() {
             Conheça a operação
           </div>
           <h2 data-reveal className="font-display font-bold uppercase text-cs-ink-900 text-4xl md:text-5xl leading-[1.05] mb-6">
-            A operação que movimenta<br />+R$1 Bilhão por ano.
+            A operação que faz<br />o mercado digital<br />vender mais
           </h2>
           <p data-reveal className="text-cs-ink-700 text-base md:text-lg leading-relaxed mb-8 max-w-[500px]">
-            Especialistas em recuperação de vendas e aumento de ticket, conectamos grandes produtores digitais aos seus clientes finais através da nossa tecnologia própria, a plataforma <b className="text-cs-ink-900">PagaH</b>.
+            Somos especialistas em recuperação de vendas e aumento de ticket. Conectamos grandes produtores digitais aos seus clientes finais através da nossa tecnologia própria, a plataforma <b className="text-cs-ink-900">PagaH</b> — num ecossistema que movimenta mais de <b className="text-cs-ink-900">R$ 1 bilhão por ano</b>.
           </p>
           <ul className="space-y-4">
             {BULLETS.map(b => (
@@ -92,7 +92,7 @@ function StatsStrip() {
   return (
     <div
       ref={ref}
-      className="max-w-[1200px] mx-auto mt-20 pt-12 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+      className="max-w-[1200px] mx-auto mt-12 md:mt-20 pt-8 md:pt-12 border-t border-white/5 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
     >
       {STATS.map((stat, i) => (
         <div key={i} className="flex flex-col gap-2">

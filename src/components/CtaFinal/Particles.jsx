@@ -1,66 +1,16 @@
-import { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import * as THREE from 'three';
-
-function ParticleField({ count = 40 }) {
-  const meshRef = useRef(null);
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3);
-    for (let i = 0; i < count; i++) {
-      arr[i * 3 + 0] = (Math.random() - 0.5) * 10;
-      arr[i * 3 + 1] = Math.random() * 6 - 3;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 2;
-    }
-    return arr;
-  }, [count]);
-
-  const speeds = useMemo(() => {
-    const arr = new Float32Array(count);
-    for (let i = 0; i < count; i++) arr[i] = 0.1 + Math.random() * 0.3;
-    return arr;
-  }, [count]);
-
-  useFrame((_, delta) => {
-    if (!meshRef.current) return;
-    const pos = meshRef.current.geometry.attributes.position;
-    for (let i = 0; i < count; i++) {
-      const y = pos.array[i * 3 + 1] + speeds[i] * delta;
-      pos.array[i * 3 + 1] = y > 3 ? -3 : y;
-    }
-    pos.needsUpdate = true;
-  });
-
-  return (
-    <points ref={meshRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.08}
-        color="#2CCE1C"
-        transparent
-        opacity={0.7}
-        blending={THREE.AdditiveBlending}
-        depthWrite={false}
-      />
-    </points>
-  );
-}
-
+/**
+ * SpotlightRings — substitui as partículas Three.js.
+ * Fundo da seção CTA-final: spotlight radial pulsando + 3 anéis concêntricos
+ * se expandindo em loop (metáfora de sinal/batimento — encaixa com call center).
+ * Tudo CSS puro.
+ */
 export function Particles() {
   return (
-    <Canvas
-      className="!absolute inset-0 pointer-events-none"
-      camera={{ position: [0, 0, 5], fov: 50 }}
-      gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
-      dpr={[1, 1.5]}
-    >
-      <ParticleField />
-    </Canvas>
+    <div className="cs-ctafinal-bg absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div className="cs-ctafinal-spotlight" />
+      <div className="cs-ctafinal-ring cs-ctafinal-ring--1" />
+      <div className="cs-ctafinal-ring cs-ctafinal-ring--2" />
+      <div className="cs-ctafinal-ring cs-ctafinal-ring--3" />
+    </div>
   );
 }

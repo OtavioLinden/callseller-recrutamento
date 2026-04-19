@@ -4,10 +4,10 @@ import { animateCount, formatCount } from '../lib/countUp';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const METRICS = [
-  { kind: 'animated',  value: 7,   prefix: '+',   suffix: '',    label: 'Anos de experiência no mercado digital' },
-  { kind: 'static',    display: '+R$ 7M',                      label: 'Recuperados mensalmente' },
-  { kind: 'animated',  value: 50,  prefix: '+',   suffix: '',    label: 'Parceiros impactados pela nossa tecnologia' },
-  { kind: 'animated',  value: 100, prefix: '+',   suffix: '',    label: 'Vendedores atuando em todo o Brasil' },
+  { kind: 'static',    display: '+ DE 7 ANOS',                    label: 'No mercado digital de alta performance' },
+  { kind: 'static',    display: '+R$ 7M',                         label: 'Recuperados mensalmente' },
+  { kind: 'animated',  value: 50,  prefix: '+',   suffix: '',     label: 'Parceiros impactados pela nossa tecnologia' },
+  { kind: 'animated',  value: 100, prefix: '+',   suffix: '',     label: 'Vendedores atuando em todo o Brasil' },
 ];
 
 export function Numeros() {
@@ -15,7 +15,7 @@ export function Numeros() {
   const reduced = usePrefersReducedMotion();
 
   return (
-    <section id="numeros" className="relative py-24 md:py-40 px-4 md:px-6 overflow-hidden">
+    <section id="numeros" className="relative py-20 md:py-40 px-4 md:px-6 overflow-hidden">
       <div
         className={`absolute inset-0 pointer-events-none transition-opacity duration-1000 ease-brand ${isInView ? 'opacity-100' : 'opacity-0'}`}
         style={{
@@ -29,7 +29,7 @@ export function Numeros() {
             Por trás dos números
           </div>
           <h2 className="font-display font-bold uppercase text-cs-ink-900 text-4xl md:text-5xl leading-[1.05]">
-            A CallSeller em números.
+            A CallSeller em números
           </h2>
         </div>
 

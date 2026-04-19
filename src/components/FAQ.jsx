@@ -25,14 +25,14 @@ export function FAQ() {
   const [open, setOpen] = useState(null);
 
   return (
-    <section id="faq" className="relative py-24 md:py-32 px-4 md:px-6">
+    <section id="faq" className="relative py-16 md:py-32 px-4 md:px-6">
       <div className="max-w-[800px] mx-auto">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="text-cs-green-400 text-xs font-bold uppercase tracking-[0.14em] mb-4">
             Dúvidas
           </div>
           <h2 className="font-display font-bold uppercase text-cs-ink-900 text-4xl md:text-5xl leading-[1.05]">
-            Perguntas frequentes.
+            Perguntas frequentes
           </h2>
         </div>
 

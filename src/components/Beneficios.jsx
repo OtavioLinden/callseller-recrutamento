@@ -36,14 +36,14 @@ export function Beneficios() {
   }, [reduced]);
 
   return (
-    <section id="beneficios" className="relative py-24 md:py-32 px-4 md:px-6 bg-cs-ink-50">
+    <section id="beneficios" className="relative py-16 md:py-32 px-4 md:px-6 bg-cs-ink-50">
       <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="text-cs-green-400 text-xs font-bold uppercase tracking-[0.14em] mb-4">
             O que você encontra
           </div>
           <h2 className="font-display font-bold uppercase text-cs-ink-900 text-4xl md:text-5xl leading-[1.05]">
-            Vantagens de trabalhar conosco.
+            Vantagens de trabalhar conosco
           </h2>
         </div>
 

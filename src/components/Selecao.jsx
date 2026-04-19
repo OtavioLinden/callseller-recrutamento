@@ -7,7 +7,7 @@ import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 const STEPS = [
   { n: '01', icon: 'clipboard-check',      title: 'Avaliação de perfil', copy: 'Todas as candidaturas são analisadas diretamente pelos nossos líderes de vendas.' },
   { n: '02', icon: 'message-circle-more',  title: 'Feedback ativo',      copy: 'Mantemos um fluxo de retorno ativo após a coleta de informações.' },
-  { n: '03', icon: 'eye',                  title: 'Transparência total', copy: 'Selecionados participam de entrevistas detalhadas pra entender 100% da empresa.' },
+  { n: '03', icon: 'eye',                  title: 'Transparência total', copy: 'Entrevistas abertas com nossos líderes. Você sai sabendo exatamente como a operação funciona.' },
 ];
 
 export function Selecao() {
@@ -35,14 +35,14 @@ export function Selecao() {
   }, [reduced]);
 
   return (
-    <section id="selecao" className="relative py-24 md:py-32 px-4 md:px-6 bg-cs-ink-50">
+    <section id="selecao" className="relative py-16 md:py-32 px-4 md:px-6 bg-cs-ink-50">
       <div className="max-w-[1200px] mx-auto">
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <div className="text-cs-green-400 text-xs font-bold uppercase tracking-[0.14em] mb-4">
             Nossa seleção
           </div>
           <h2 className="font-display font-bold uppercase text-cs-ink-900 text-4xl md:text-5xl leading-[1.05] mb-4">
-            Foco nas pessoas.
+            Foco nas pessoas
           </h2>
           <p className="text-cs-ink-700 max-w-[560px] mx-auto">
             Processo humano e transparente. Não buscamos um padrão — buscamos energia, comunicação e foco em solução.

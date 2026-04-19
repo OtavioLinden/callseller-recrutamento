@@ -33,8 +33,8 @@ export default function App() {
         <Selecao />
         <Treinamento />
         <Numeros />
-        <FAQ />
         <CtaFinal />
+        <FAQ />
       </main>
       <Footer />
     </>

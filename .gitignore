@@ -39,5 +39,8 @@ coverage/
 # Heavy originals kept locally only
 Infos site Callseller/Videos originais/
 
+# Correction/reference images (local only)
+image copy*.png
+
 
 .vercel

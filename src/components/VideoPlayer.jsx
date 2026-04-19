@@ -1,13 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useInView } from '../hooks/useInView';
 import { Icon } from './Icon';
 
 /**
- * VideoPlayer — dois modos, inline sempre (sem fullscreen).
- *  - mode="autoplay": video começa muted + loop quando entra na viewport.
- *    Botão verde "Clique pra ouvir" (speaker) no canto — click toggle mute/unmute.
- *  - mode="click": poster até o click; click começa a tocar inline com controls + audio.
+ * VideoPlayer — dois modos, sempre inline (sem fullscreen).
+ *
+ *  - mode="autoplay": vídeo começa muted + loop quando entra na viewport.
+ *    Click em qualquer lugar do vídeo = toggle mute. Indicador de estado
+ *    (speaker) pequeno no canto superior direito.
+ *
+ *  - mode="click": poster até o primeiro click. Click play = começa a tocar
+ *    com áudio + controles nativos. Subsequentes clicks usam controles nativos.
+ *
+ * REGRA GLOBAL: só UM vídeo por vez pode ter áudio. Quando um VideoPlayer
+ * desmuta, dispara um evento customizado `video-audio-claimed` com o ID do
+ * vídeo. Os outros VideoPlayers escutam e mutam-se automaticamente.
  */
+
+const AUDIO_EVENT = 'video-audio-claimed';
+
+function claimAudio(id) {
+  window.dispatchEvent(new CustomEvent(AUDIO_EVENT, { detail: { id } }));
+}
+
 export function VideoPlayer({
   src,
   poster,
@@ -15,11 +30,14 @@ export function VideoPlayer({
   ariaLabel,
   className = '',
 }) {
+  const uid = useId();
   const videoRef = useRef(null);
   const { ref: containerRef, isInView } = useInView({ threshold: 0.5 });
-  const [started, setStarted] = useState(false);   // modo click: vídeo já foi iniciado?
-  const [muted, setMuted] = useState(true);        // modo autoplay: audio mutado?
+  const [started, setStarted] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const firstUnmuteRef = useRef(true);
 
+  // Autoplay: play/pause ao entrar/sair da viewport
   useEffect(() => {
     if (mode !== 'autoplay') return;
     const vid = videoRef.current;
@@ -31,26 +49,45 @@ export function VideoPlayer({
     }
   }, [mode, isInView]);
 
-  // Toggle mute/unmute no modo autoplay
+  // Escutar quando outro vídeo reivindicar áudio — mutar-se
+  useEffect(() => {
+    const onClaim = (e) => {
+      if (e.detail?.id === uid) return;
+      const vid = videoRef.current;
+      if (!vid || vid.muted) return;
+      vid.muted = true;
+      setMuted(true);
+    };
+    window.addEventListener(AUDIO_EVENT, onClaim);
+    return () => window.removeEventListener(AUDIO_EVENT, onClaim);
+  }, [uid]);
+
   const toggleMute = () => {
     const vid = videoRef.current;
     if (!vid) return;
-    const nowMuted = !muted;
-    vid.muted = nowMuted;
-    setMuted(nowMuted);
-    // Se desmutar, garante que está tocando (caso pausado por algum motivo)
-    if (!nowMuted) {
+    const willBeMuted = !vid.muted;
+    vid.muted = willBeMuted;
+    setMuted(willBeMuted);
+    if (!willBeMuted) {
+      // Primeira vez que o usuário ativa o áudio, rebobina o vídeo pro começo
+      // pra ele escutar desde o início (o loop muted pode ter rodado um tempo).
+      if (firstUnmuteRef.current) {
+        try { vid.currentTime = 0; } catch {}
+        firstUnmuteRef.current = false;
+      }
+      claimAudio(uid);
       vid.play().catch(() => {});
     }
   };
 
-  // Start inline playback (modo click)
   const startPlayback = () => {
     const vid = videoRef.current;
     if (!vid) return;
     vid.muted = false;
     vid.controls = true;
     vid.play().catch(() => {});
+    claimAudio(uid);
+    setMuted(false);
     setStarted(true);
   };
 
@@ -62,16 +99,21 @@ export function VideoPlayer({
     >
       <video
         ref={videoRef}
-        className="w-full h-full object-cover block"
+        className={`w-full h-full object-cover block ${mode === 'autoplay' ? 'cursor-pointer' : ''}`}
         muted
-        {...(mode === 'autoplay' ? { loop: true } : {})}
+        {...(mode === 'autoplay' ? { loop: true, onClick: toggleMute } : {})}
         playsInline
         preload="metadata"
         poster={poster}
         aria-label={ariaLabel}
         src={src}
+        disablePictureInPicture
+        disableRemotePlayback
+        x-webkit-airplay="deny"
+        controlsList="nodownload noremoteplayback noplaybackrate"
       />
 
+      {/* Overlay de play inicial — só modo click */}
       {mode === 'click' && !started && (
         <button
           type="button"
@@ -88,16 +130,16 @@ export function VideoPlayer({
         </button>
       )}
 
+      {/* Indicador de mute — autoplay. Discreto, toggle também via click-no-video. */}
       {mode === 'autoplay' && (
         <button
           type="button"
           onClick={toggleMute}
-          className="absolute bottom-4 right-4 flex items-center gap-2 pl-3 pr-4 py-2.5 rounded-full bg-cs-green-500 text-cs-ink-0 font-bold text-xs uppercase tracking-[0.14em] hover:bg-cs-green-400 hover:scale-[1.03] transition-all duration-150 ease-brand !border-0"
-          style={{ boxShadow: 'var(--glow-green-sm)' }}
-          aria-label={muted ? `Clique pra ouvir: ${ariaLabel}` : `Silenciar: ${ariaLabel}`}
+          aria-label={muted ? `Ativar som: ${ariaLabel}` : `Silenciar: ${ariaLabel}`}
+          className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center rounded-full bg-black/50 backdrop-blur-sm text-white hover:bg-cs-green-500 hover:text-cs-ink-0 transition-all duration-150 ease-brand !border-0"
+          style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.08)' }}
         >
-          <Icon name={muted ? 'volume-x' : 'volume-2'} size={16} className="text-cs-ink-0" />
-          <span>{muted ? 'Clique pra ouvir' : 'Silenciar'}</span>
+          <Icon name={muted ? 'volume-x' : 'volume-2'} size={18} />
         </button>
       )}
     </div>

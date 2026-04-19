@@ -61,7 +61,7 @@ export function Treinamento() {
   }, [reduced]);
 
   return (
-    <section id="treinamento" className="relative py-24 md:py-32 px-4 md:px-6">
+    <section id="treinamento" className="relative py-16 md:py-32 px-4 md:px-6">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-12 md:mb-16">
           <div className="text-cs-green-400 text-xs font-bold uppercase tracking-[0.14em] mb-4">
@@ -113,7 +113,7 @@ export function Treinamento() {
               textShadow: '0 0 40px rgba(31,181,38,0.35)',
             }}
           >
-            Nenhuma aula vence a prática.
+            Nenhuma aula vence a prática
           </p>
         </div>
       </div>

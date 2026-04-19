@@ -2,25 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Icon } from '../Icon';
 import { HeroCanvas } from './HeroCanvas';
-import { ProofBar } from './ProofBar';
-import { WHATSAPP_URL } from '../../lib/constants';
-import { scrollToSelector } from '../../lib/smoothScroll';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 
 export function Hero() {
   const reduced = usePrefersReducedMotion();
-  const revealRef = useRef({ current: 0 });
-  // single obj wrapper so gsap can tween revealRef.current
   const revealState = useRef({ v: 0 });
   const mouseRef = useRef({ x: 0, y: 0 });
 
   const eyebrowRef = useRef(null);
   const titleRef = useRef(null);
   const leadRef = useRef(null);
-  const ctasRef = useRef(null);
+  const photoRef = useRef(null);
   const [webglSupported, setWebglSupported] = useState(true);
 
-  // Proxy: canvas reads revealRef.current as a number; we expose an object with a getter
   const revealReadRef = useRef(0);
 
   useEffect(() => {
@@ -34,7 +28,7 @@ export function Hero() {
   useEffect(() => {
     if (reduced) {
       revealReadRef.current = 1;
-      [eyebrowRef, titleRef, leadRef, ctasRef].forEach(r => {
+      [eyebrowRef, titleRef, leadRef, photoRef].forEach(r => {
         if (r.current) {
           r.current.style.opacity = 1;
           r.current.style.transform = 'none';
@@ -53,31 +47,42 @@ export function Hero() {
     tl.fromTo(eyebrowRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5 }, 0.4);
     tl.fromTo(titleRef.current, { opacity: 0, y: 32, scale: 0.98 }, { opacity: 1, y: 0, scale: 1, duration: 0.7 }, 0.55);
     tl.fromTo(leadRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5 }, 1.0);
-    tl.fromTo(ctasRef.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5 }, 1.2);
+    tl.fromTo(photoRef.current, { opacity: 0, y: 28, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.7 }, 1.15);
 
     return () => { tl.kill(); };
   }, [reduced]);
 
   useEffect(() => {
     if (reduced) return;
-    const onMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = -((e.clientY / window.innerHeight) * 2 - 1);
-      mouseRef.current.x += (x - mouseRef.current.x) * 0.08;
-      mouseRef.current.y += (y - mouseRef.current.y) * 0.08;
-    };
-    window.addEventListener('mousemove', onMove, { passive: true });
-    return () => window.removeEventListener('mousemove', onMove);
-  }, [reduced]);
+    const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  const handleVideoClick = (e) => {
-    e.preventDefault();
-    scrollToSelector('#operacao');
-  };
+    if (hasHover) {
+      const onMove = (e) => {
+        const x = (e.clientX / window.innerWidth) * 2 - 1;
+        const y = -((e.clientY / window.innerHeight) * 2 - 1);
+        mouseRef.current.x += (x - mouseRef.current.x) * 0.08;
+        mouseRef.current.y += (y - mouseRef.current.y) * 0.08;
+      };
+      window.addEventListener('mousemove', onMove, { passive: true });
+      return () => window.removeEventListener('mousemove', onMove);
+    }
+
+    let raf = 0;
+    const start = performance.now();
+    const orbit = (now) => {
+      const t = (now - start) / 1000;
+      const angle = (t / 14) * Math.PI * 2;
+      mouseRef.current.x = Math.cos(angle) * 0.55;
+      mouseRef.current.y = Math.sin(angle) * 0.35;
+      raf = requestAnimationFrame(orbit);
+    };
+    raf = requestAnimationFrame(orbit);
+    return () => cancelAnimationFrame(raf);
+  }, [reduced]);
 
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-cs-ink-0 pt-20 pb-12 px-4"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-cs-ink-0 pt-16 pb-24 md:pb-28 px-4"
       id="hero"
     >
       {webglSupported && !reduced ? (
@@ -90,6 +95,17 @@ export function Hero() {
           className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none"
         />
       )}
+
+      {/* Mobile-only darkening shield */}
+      <div className="cs-hero-shield" aria-hidden="true" />
+
+      {/* Logo mark watermark — subtle behind hero content */}
+      <img
+        src="/assets/logo-mark-white.png"
+        alt=""
+        aria-hidden="true"
+        className="cs-hero-watermark pointer-events-none"
+      />
 
       <div className="relative z-10 max-w-[900px] mx-auto text-center">
         <div
@@ -110,45 +126,48 @@ export function Hero() {
             textShadow: '0 0 40px rgba(31,181,38,0.35)',
           }}
         >
-          Trabalhe<br />Conosco.
+          Trabalhe<br />Conosco
         </h1>
 
         <p
           ref={leadRef}
-          className="mt-8 max-w-[600px] mx-auto text-cs-ink-700 text-base sm:text-lg leading-relaxed"
+          className="mt-8 max-w-[600px] mx-auto text-cs-ink-900 text-base sm:text-lg leading-relaxed font-medium"
           style={{ opacity: 0 }}
         >
-          Somos uma operação de vendas de alta performance, referência nacional no Mercado Digital.
-          Inseridos em um ecossistema que movimenta mais de <b className="text-cs-ink-900">R$ 1 Bilhão por ano</b>.
+          Operação de vendas de alta performance, referência nacional no Mercado Digital brasileiro.
         </p>
 
         <div
-          ref={ctasRef}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-          style={{ opacity: 0 }}
+          ref={photoRef}
+          className="relative mt-10 mx-auto w-full max-w-[420px] md:max-w-[480px] rounded-2xl overflow-hidden cs-hero-photo"
+          style={{
+            opacity: 0,
+            boxShadow: 'inset 0 0 0 1px rgba(31,181,38,0.5), 0 0 0 1px rgba(31,181,38,0.25), 0 20px 60px rgba(0,0,0,0.6), var(--glow-green-sm)',
+          }}
         >
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-4 bg-cs-green-500 text-cs-ink-0 rounded-lg font-extrabold uppercase tracking-[0.14em] text-sm !border-0 hover:bg-cs-green-600 transition-all duration-150 ease-brand cs-pulse"
-            style={{ boxShadow: 'var(--glow-green-md)' }}
-            data-cta="hero"
-          >
-            Quero me candidatar
-            <Icon name="arrow-up-right" size={18} />
-          </a>
-          <button
-            type="button"
-            onClick={handleVideoClick}
-            className="inline-flex items-center gap-2 px-7 py-4 bg-transparent text-cs-ink-900 rounded-lg font-bold uppercase tracking-[0.14em] text-sm border border-white/20 hover:border-white/40 transition-all duration-150 ease-brand"
-          >
-            <Icon name="play-circle" size={20} />
-            Assistir vídeo institucional
-          </button>
+          <img
+            src="/assets/team-floor.jpeg"
+            alt="Equipe CallSeller no chão de vendas"
+            className="block w-full h-auto"
+            style={{ filter: 'saturate(0.72) brightness(0.92) contrast(1.02)' }}
+            loading="lazy"
+          />
+          {/* Dark overlay pra integrar com o tema */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0) 60%), linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, transparent 30%)',
+            }}
+          />
         </div>
+      </div>
 
-        <ProofBar />
+      {/* Scroll hint — só a setinha pulsando */}
+      <div
+        className="cs-scroll-hint absolute bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 pointer-events-none select-none"
+        aria-hidden="true"
+      >
+        <Icon name="chevron-down" size={22} className="text-cs-green-400 cs-bounce" />
       </div>
     </section>
   );

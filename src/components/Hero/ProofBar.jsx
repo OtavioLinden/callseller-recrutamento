@@ -4,9 +4,9 @@ import { animateCount, formatCount } from '../../lib/countUp';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 
 const ITEMS = [
-  { template: '+{n} ANOS DE OPERAÇÃO',       value: 7,   animated: true },
-  { template: '+{n} VENDEDORES NO BRASIL',   value: 100, animated: true },
-  { template: '+R$ 7M RECUPERADOS/MÊS',      value: 7,   animated: false, staticText: '+R$ 7M RECUPERADOS/MÊS' },
+  { template: 'HÁ + DE {n} ANOS DE OPERAÇÃO', value: 7,   animated: true },
+  { template: '+{n} VENDEDORES NO BRASIL',    value: 100, animated: true },
+  { template: '+R$ 7M RECUPERADOS/MÊS',       value: 7,   animated: false, staticText: '+R$ 7M RECUPERADOS/MÊS' },
 ];
 
 export function ProofBar() {
