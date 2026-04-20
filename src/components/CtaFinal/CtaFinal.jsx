@@ -93,7 +93,7 @@ export function CtaFinal() {
           data-word
           style={{ opacity: reduced ? 1 : 0 }}
         >
-          Mande um oi pelo WhatsApp. A gente te conta os próximos passos.
+          Nos chame no WhatsApp que te explicamos os próximos passos.
         </p>
 
         <a
@@ -113,13 +113,6 @@ export function CtaFinal() {
           <Icon name="arrow-up-right" size={22} />
         </a>
 
-        <p
-          className="mt-8 text-xs text-cs-ink-600 uppercase tracking-[0.14em]"
-          data-word
-          style={{ opacity: reduced ? 1 : 0 }}
-        >
-          Atendimento direto com nossa equipe · Seg-Sex, 9h-18h
-        </p>
       </div>
     </section>
   );
