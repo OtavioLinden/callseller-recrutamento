@@ -72,9 +72,9 @@ function Metric({ metric, animate, delay }) {
   return (
     <div className="flex flex-col items-center gap-3">
       <div
-        className="font-display font-extrabold uppercase text-cs-ink-900 leading-[0.9] whitespace-nowrap"
+        className="font-display font-extrabold uppercase text-cs-ink-900 leading-[0.9] break-words"
         style={{
-          fontSize: 'clamp(48px, 7vw, 104px)',
+          fontSize: 'clamp(36px, 5.5vw, 88px)',
           letterSpacing: '-0.015em',
           textShadow: '0 0 40px rgba(31,181,38,0.35)',
         }}

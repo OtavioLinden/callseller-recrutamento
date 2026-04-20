@@ -84,7 +84,7 @@ export function Treinamento() {
             poster={`${baseUrl}assets/recrutamento-radial.png`}
             mode="autoplay"
             ariaLabel="Vídeo — metodologia e estrutura de trabalho"
-            className="aspect-video"
+            className="aspect-square"
           />
 
           <ul className="space-y-6">

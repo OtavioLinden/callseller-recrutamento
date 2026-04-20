@@ -53,7 +53,7 @@ export function Operacao() {
             poster={`${baseUrl}assets/office-photo.jpeg`}
             mode="autoplay"
             ariaLabel="Vídeo institucional — conheça a CallSeller"
-            className="aspect-video"
+            className="aspect-square"
           />
         </div>
 
