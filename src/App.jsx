@@ -31,8 +31,8 @@ export default function App() {
         <Beneficios />
         <Depoimentos />
         <Selecao />
-        <Treinamento />
         <Numeros />
+        <Treinamento />
         <CtaFinal />
         <FAQ />
       </main>

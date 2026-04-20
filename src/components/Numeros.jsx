@@ -4,7 +4,7 @@ import { animateCount, formatCount } from '../lib/countUp';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 const METRICS = [
-  { kind: 'static',    display: '+ DE 7 ANOS',                    label: 'No mercado digital de alta performance' },
+  { kind: 'static',    display: '+7 ANOS',                         label: 'No mercado digital de alta performance' },
   { kind: 'static',    display: '+R$ 7M',                         label: 'Recuperados mensalmente' },
   { kind: 'animated',  value: 50,  prefix: '+',   suffix: '',     label: 'Parceiros impactados pela nossa tecnologia' },
   { kind: 'animated',  value: 100, prefix: '+',   suffix: '',     label: 'Vendedores atuando em todo o Brasil' },
