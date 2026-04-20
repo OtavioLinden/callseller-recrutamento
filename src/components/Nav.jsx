@@ -3,6 +3,7 @@ import { NAV_LINKS, WHATSAPP_URL } from '../lib/constants';
 import { Icon } from './Icon';
 
 export function Nav() {
+  const baseUrl = import.meta.env.BASE_URL;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -24,8 +25,8 @@ export function Nav() {
     >
       <div className="max-w-[1200px] mx-auto flex items-center justify-between h-16 px-4 md:px-6">
         <a href="#top" className="flex items-center gap-2 !border-0" aria-label="CallSeller — início">
-          <img src="/assets/logo-mark-white.png" alt="" className="h-8 w-auto" />
-          <img src="/assets/logo-horizontal-white.png" alt="CallSeller" className="h-6 w-auto hidden sm:block" />
+          <img src={`${baseUrl}assets/logo-mark-white.png`} alt="" className="h-8 w-auto" />
+          <img src={`${baseUrl}assets/logo-horizontal-white.png`} alt="CallSeller" className="h-6 w-auto hidden sm:block" />
         </a>
 
         <ul className="hidden md:flex items-center gap-8">

@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 
-const VIDEOS = [
-  { id: 'd1', src: '/videos/depoimento1.mp4', tag: 'Vendedor CallSeller', name: 'Ramon' },
-  { id: 'd2', src: '/videos/depoimento2.mp4', tag: 'Vendedor CallSeller', name: 'Marcos' },
-];
-
 export function Depoimentos() {
+  const baseUrl = import.meta.env.BASE_URL;
+  const videos = [
+    { id: 'd1', src: `${baseUrl}videos/depoimento1.mp4`, tag: 'Vendedor CallSeller', name: 'Ramon' },
+    { id: 'd2', src: `${baseUrl}videos/depoimento2.mp4`, tag: 'Vendedor CallSeller', name: 'Marcos' },
+  ];
+
   const [activeId] = useState(null);
 
   return (
@@ -22,7 +23,7 @@ export function Depoimentos() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {VIDEOS.map(v => (
+          {videos.map(v => (
             <div
               key={v.id}
               className={`transition-opacity duration-300 ease-brand ${

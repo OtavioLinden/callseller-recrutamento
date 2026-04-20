@@ -25,6 +25,7 @@ function splitWords(text, reduced) {
 }
 
 export function Treinamento() {
+  const baseUrl = import.meta.env.BASE_URL;
   const headlineRef = useRef(null);
   const contentRef = useRef(null);
   const reduced = usePrefersReducedMotion();
@@ -79,8 +80,8 @@ export function Treinamento() {
 
         <div ref={contentRef} className="grid md:grid-cols-2 gap-12 items-center">
           <VideoPlayer
-            src="/videos/apresentacao2.mp4"
-            poster="/assets/recrutamento-radial.png"
+            src={`${baseUrl}videos/apresentacao2.mp4`}
+            poster={`${baseUrl}assets/recrutamento-radial.png`}
             mode="autoplay"
             ariaLabel="Vídeo — metodologia e estrutura de trabalho"
             className="aspect-video"

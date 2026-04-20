@@ -21,6 +21,7 @@ const STATS = [
 ];
 
 export function Operacao() {
+  const baseUrl = import.meta.env.BASE_URL;
   const textRef = useRef(null);
   const reduced = usePrefersReducedMotion();
 
@@ -48,8 +49,8 @@ export function Operacao() {
       <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="order-2 md:order-1">
           <VideoPlayer
-            src="/videos/apresentacao1.mp4"
-            poster="/assets/office-photo.jpeg"
+            src={`${baseUrl}videos/apresentacao1.mp4`}
+            poster={`${baseUrl}assets/office-photo.jpeg`}
             mode="autoplay"
             ariaLabel="Vídeo institucional — conheça a CallSeller"
             className="aspect-video"

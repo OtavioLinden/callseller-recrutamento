@@ -5,6 +5,7 @@ import { HeroCanvas } from './HeroCanvas';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
 
 export function Hero() {
+  const baseUrl = import.meta.env.BASE_URL;
   const reduced = usePrefersReducedMotion();
   const revealState = useRef({ v: 0 });
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -89,7 +90,7 @@ export function Hero() {
         <HeroCanvas revealRef={revealReadRef} mouseRef={mouseRef} />
       ) : (
         <img
-          src="/assets/recrutamento-radial.png"
+          src={`${baseUrl}assets/recrutamento-radial.png`}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none"
@@ -101,7 +102,7 @@ export function Hero() {
 
       {/* Logo mark watermark — subtle behind hero content */}
       <img
-        src="/assets/logo-mark-white.png"
+        src={`${baseUrl}assets/logo-mark-white.png`}
         alt=""
         aria-hidden="true"
         className="cs-hero-watermark pointer-events-none"
@@ -146,7 +147,7 @@ export function Hero() {
           }}
         >
           <img
-            src="/assets/team-floor.jpeg"
+            src={`${baseUrl}assets/team-floor.jpeg`}
             alt="Equipe CallSeller no chão de vendas"
             className="block w-full h-auto"
             style={{ filter: 'saturate(0.72) brightness(0.92) contrast(1.02)' }}

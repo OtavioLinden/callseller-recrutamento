@@ -6,7 +6,7 @@
  */
 export function Particles() {
   return (
-    <div className="cs-ctafinal-bg absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <div className="cs-ctafinal-bg absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true" data-build="20260420c">
       <div className="cs-ctafinal-spotlight" />
       <div className="cs-ctafinal-ring cs-ctafinal-ring--1" />
       <div className="cs-ctafinal-ring cs-ctafinal-ring--2" />
